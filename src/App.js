@@ -6,13 +6,19 @@ export default class App extends Component {
         peopleInSpace: []
     }
 
-    componentDidMount() {
-        fetch('http://api.open-notify.org/astros.json')
-            .then(resp => resp.json())
-            .then(data => {
-                peopleInSpace: data.people
+    // componentDidMount() {
+    //     fetch('http://api.open-notify.org/astros.json')
+    //         .then(resp => resp.json())
+    //         .then(data => {
+    //             peopleInSpace: data.people
             
-            })
+    //         })
+    // }
+
+    async componentDidMount() {
+        const resp = await fetch('http://api.open-notify.org/astros.json');
+        const data = await resp.json();
+        peopleInSpace: data.people;
     }
 
     render() {
